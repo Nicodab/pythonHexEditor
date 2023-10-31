@@ -1,5 +1,6 @@
 from PySide6.QtWidgets import QTextEdit
 from PySide6 import QtWidgets, QtGui
+from PySide6.QtCore import Qt
 from PIL import Image
 
 class HexEditor(QTextEdit):
@@ -16,12 +17,15 @@ class HexEditor(QTextEdit):
         self.hex_view = self.generate_hex_view()
     
     def load_image_content(self, image_content):
-        # Affichez le contenu brut (image) à droite
-        self.image_label.setScaledContents(True) #redimensionnement de l'image
+        # Affichage du contenu brut (image) à droite
+        #self.image_label.setScaledContents(True) #redimensionnement de l'image
         pixmap = QtGui.QPixmap()
         pixmap.loadFromData(image_content)
-        #self.raw_content_widget.clear()
         self.image_label.setPixmap(pixmap)
+
+        layout = QtWidgets.QVBoxLayout(self)
+        layout.addWidget(self.image_label, alignment=Qt.AlignCenter)
+        self.raw_content_widget.setLayout(layout)
 
 
     def generate_hex_view(self):

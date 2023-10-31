@@ -1,3 +1,4 @@
+#!/usr/bin/python
 from src.file_editor import FileEditor
 from src.file_info import FileInfo
 from src.image_info_extractor import ImageInfoExtractor
