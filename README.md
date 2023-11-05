@@ -62,7 +62,8 @@ Voici la fenêtre qui appairaît. Ces données sont modifiables avant de pouvoir
 ![Alt text](url.png)
 
 L'action **Ouvrir URL** du menu **Fichier** ouvre une boîte de dialogue dans laquelle vous pourrez rentrer votre URL vers le fichier que vous voulez charger. 
-
-![Alt text](url_file.png)
+<div style="text-align:center">
+    ![Alt text](url_file.png)
+</div>
 Le fichier a bien été chargé depuis un URL. On peut le comfirmer car l'encadrement **HTTP - HEADER** est devenu *vert*.  
 Vous remarquerez également que les headers HTTP retourné par le serveur distant sont écrites sous l'encadrement cité. Ces données là sont en Read-Only.
