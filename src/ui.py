@@ -156,33 +156,25 @@ class FileAnalyzerApp(QtWidgets.QMainWindow):
                 
                 # Maj des zones de texte hex_editor (et raw_content?)
                 self.hex_editor_widget.setPlainText(self.hex_editor.hex_view)
+                
                 ###################################################
                 # Ouverture de l'image avec Pillow
                 print(f"file_path: {file_path}")
                 with Image.open(file_path) as img:
-                    # Métadonnées
-                    #meta_values = img.info.values()
-                    #print(meta_values)
                     
                     image_info = img.info
-                    # Exemple d'informations que vous pouvez extraire
+                    # Extraction d'informations
                     image_size = len(img.tobytes())  # Poids de l'image en octets
                     image_mode = img.mode  # Mode de l'image
                     date_modification = image_info.get("DateTime") or image_info.get("DateTimeOriginal")
-                    # Maintenant, vous pouvez afficher ces informations dans votre interface utilisateur
                     # Mise à jour du texte dans le QLabel 
                     self.image_info_label.setText(f"Poids de l'image: {image_size} octets\n"
                                             f"Mode de l'image: {image_mode}\nDate de modification: {date_modification}")
-                    #self.image_info_label.setLineWidth(3)
                     self.image_info_label.setStyleSheet("border-radius: 10px; border-style: solid; border-width: 1px; border-color: black;")
                     self.layout_for_image.addWidget(self.image_info_label, alignment=Qt.AlignCenter)
-                    #layout_json = QtWidgets.QVBoxLayout()
-                    #layout_json.addWidget(self.export_button)
                     self.raw_content_widget.setLayout(self.layout_for_image)
-                #self.hex_editor.load_image_content(image_content)
-                #self.hex_editor_widget.setPlainText(self.hex_editor.hex_view)
-                print(f"After loading image\n")
-            # Pas image
+
+            # Pas une image
             else:
                 with open(file_path, "r", encoding="utf-8") as file:
                     file_content = file.read()
@@ -212,7 +204,6 @@ class FileAnalyzerApp(QtWidgets.QMainWindow):
 
     def open_url(self):
         if self.hex_editor.isClean() == False:
-            print("PAAAAAAAAAAAAAAAAAAAS CLEEEEEEEEEEEEEEEAN")
             self.hex_editor.cleanViews()
             self.hex_editor_widget.setPlainText(self.hex_editor.hex_view)
             self.hex_editor_widget.setPlainText(self.hex_editor.raw_content)
